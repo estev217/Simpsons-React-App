@@ -4,7 +4,7 @@ import './Navbar.css';
 
 function Navbar() {
     return (
-      <nav className="Navbar" >https://fr.wikipedia.org/wiki/Les_Simpson
+      <nav className="Navbar">Les Simpson
       </nav>
     );
   }
