@@ -1,20 +1,13 @@
 import React from 'react';
 import Navbar from './components/Navbar';
-import axios from 'axios';
 import DisplayQuote from './components/DisplayQuote';
-
-const sampleQuote =   {
-  quote: "Shoplifting is a victimless crime, like punching someone in the dark.",
-  character: "Nelson Muntz",
-  image : "https://cdn.glitch.com/3c3ffadc-3406-4440-bb95-d40ec8fcde72%2FNelsonMuntz.png?1497567511185",
-  characterDirection : "Left"
-};
+import axios from 'axios';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      quote: sampleQuote
+      quote: null
     };
     this.getQuote = this.getQuote.bind(this);
   }
@@ -26,9 +19,8 @@ class App extends React.Component {
       .then(response => response.data)
       // Use this data to update the state
       .then(data => {
-        console.log(data);
         this.setState({
-          quote: data.quotes[0],
+          quote: data[0],
         });
     });
   }
@@ -37,7 +29,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Navbar />
-        <DisplayQuote />
+        {this.state.quote ? <DisplayQuote quote={this.state.quote} /> : null}
         <button type="button" onClick={this.getQuote}>Change quote</button>
       </div>
     );

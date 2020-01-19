@@ -1,5 +1,4 @@
 import React from 'react';
-import QuoteCard from './QuoteCard';
 
 function DisplayQuote({ quote }) {
   return (
